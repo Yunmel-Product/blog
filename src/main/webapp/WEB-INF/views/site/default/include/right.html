@@ -1,0 +1,47 @@
+<div class="bfff top9 cl">
+    <ul class="tuijian">
+        <h3>热门推荐</h3>
+        <span class="span-mark"></span>
+        <volist name="d" id="vo">
+            <li><a href="__ROOT__/article/{$vo.id}.html" title="{$vo.title}">{$vo.title}</a>
+                <p>
+                    {$vo.time|date="Y-m-d H:i:s",###}
+                </p>
+            </li>
+        </volist>
+    </ul>
+</div>
+<div class="bfff top2 cl">
+    <ul class="tuijian2">
+        <h3>精选内容</h3>
+        <span class="span-mark"></span>
+        <volist name="e" id="vo">
+            <li>
+                <div>
+                    <a href="__ROOT__/article/{$vo.id}.html" title="{$vo.title}">
+                        <if condition="$vo[pic] neq ''">
+                            <img src="__ROOT__/Uploads{$vo.pic}" width="250" height="115" alt="{$vo.title}">
+                            <else />
+                            <img src="__HOME__/img/1.jpg" width="250" height="115" alt="暂无缩略图">
+                        </if>
+                    </a>
+                </div>
+                <p>
+                    <a href="__ROOT__/article/{$vo.id}.html" title="{$vo.title}">{$vo.title}</a>
+                </p>
+            </li>
+        </volist>
+    </ul>
+</div>
+
+<div id="siweitu" class="bfff top2 cl" style="position: static;">
+    <div class="tuijian3">
+        <h3>友情连接</h3>
+        <span class="span-mark"></span>
+        <ul class="cl">
+            <volist name="l" id="vo">
+                <li><a target="_blank" href="{$vo.link}">{$vo.name}</a></li>
+            </volist>
+        </ul>
+    </div>
+</div>

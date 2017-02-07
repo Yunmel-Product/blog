@@ -1,0 +1,31 @@
+
+<div class="footer top4">
+   <div class="wp cl">
+      <p>
+         Powered by <a href="http://www.templet360.com/" target="_blank">© 2016-2018 yunmel Inc. All Rights Reserved</a> 1.0
+         <span class="pipe3">|</span>
+            xu.
+         <span class="pipe3">|</span>
+         <a href="http://www.miitbeian.gov.cn/" target="_blank">蜀ICP备14027942号-3</a>
+         <span class="pipe3">|</span>
+         <a href="http://wpa.qq.com/msgrd?v=3&uin={$c.qqs}&site=qq&menu=yes" target="_blank" >四川云麦尔科技有限公司</a>
+      </p>
+   </div>
+</div>
+
+<script type="text/javascript">
+   jQuery("#nav").slide({ type:"menu", titCell:".lis", targetCell:".sub",effect:"slideDown",delayTime:300,triggerTime:0,returnDefault:true});
+</script>
+
+<script type="text/javascript">
+   jQuery.noConflict();
+   jQuery(function() {
+      var elm = jQuery('#siweitu');
+      var startPos = jQuery(elm).offset().top;
+      jQuery.event.add(window, "scroll", function() {
+         var p = jQuery(window).scrollTop();
+         jQuery(elm).css('position',((p) > startPos) ? 'fixed' : 'static');
+         jQuery(elm).css('top',((p) > startPos) ? '75px' : '');
+      });
+   });
+</script>

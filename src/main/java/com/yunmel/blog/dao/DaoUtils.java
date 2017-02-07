@@ -21,13 +21,18 @@ package com.yunmel.blog.dao;
 
 import java.util.*;
 
-import com.yunmel.blog.model.BookInfo;
-import com.yunmel.blog.model.UserInfo;
+import com.yunmel.blog.model.*;
 import jetbrick.util.DateUtils;
+import org.sql2o.Connection;
+import org.sql2o.Sql2o;
+import org.sql2o.reflection.ObjectConstructor;
 
 public class DaoUtils {
     private static Map<Integer, UserInfo> users;
     private static Map<Integer, BookInfo> books;
+
+    private static List<Category> categories;
+    private static Sql2o sql2o;
 
     static {
         users = new LinkedHashMap<Integer, UserInfo>();
@@ -46,6 +51,16 @@ public class DaoUtils {
         addBook(new BookInfo(7, "地理书", 2, 20.00, DateUtils.parse("2006-07-01")));
         addBook(new BookInfo(8, "历史书", 3, 20.07, DateUtils.parse("2007-08-01")));
         addBook(new BookInfo(9, "生物书", 3, 20.07, DateUtils.parse("2008-09-01")));
+
+
+        categories = new ArrayList<Category>();
+        categories.add(new Category("1","首页"));
+        categories.add(new Category("2","服务"));
+        categories.add(new Category("3","产品"));
+        categories.add(new Category("4","动态"));
+
+        sql2o = new Sql2o("jdbc:mysql://localhost:3306/yblog", "root", "root");
+
     }
 
     private static void addUser(UserInfo user) {
@@ -70,5 +85,23 @@ public class DaoUtils {
 
     public static Collection<BookInfo> getBookList() {
         return books.values();
+    }
+
+    public static List<Category> getCategories(){
+        return categories;
+    }
+
+    public static List<Banner> getBanners(){
+        String sql = "select * from tpt_banner";
+        try (Connection con = sql2o.open()) {
+            return con.createQuery(sql).executeAndFetch(Banner.class);
+        }
+    }
+
+    public static List<Article> findArticles(){
+        String sql = "select * from tpt_article";
+        try (Connection con = sql2o.open()) {
+            return con.createQuery(sql).executeAndFetch(Article.class);
+        }
     }
 }

@@ -17,42 +17,33 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.yunmel.blog.web;
+package com.yunmel.blog.web.site;
 
+import com.yunmel.blog.core.BaseController;
 import com.yunmel.blog.dao.DaoUtils;
-import com.yunmel.blog.model.UserInfo;
 
-import java.util.Collection;
-
+import com.yunmel.blog.utils.Site;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-public class IndexController {
-	
-    @RequestMapping("/index")
-    public String index() {
-        return "index";
+public class IndexController extends BaseController{
+
+    @RequestMapping({"/","/index"})
+    public String index(Model model) {
+//        JetEngine jetEngine = JetWebEngine.getEngine();
+//        JetGlobalContext globalContext = jetEngine.getGlobalContext();
+//        globalContext.set("theme", Site.theme);
+        model.addAttribute("res",Site.getResPath());
+        model.addAttribute("categories",DaoUtils.getCategories());
+        model.addAttribute("title","云麦尔科技有限公司 - 博客");
+        model.addAttribute("b",DaoUtils.getBanners().get(0));
+        model.addAttribute("articles",DaoUtils.findArticles());
+        return site("index");
     }
 
-    @RequestMapping("/users")
-    public String users(ModelMap modelMap) {
-        modelMap.put("userlist", DaoUtils.getUserList());
-        return "users";
-    }
 
-    @RequestMapping("/books")
-    public String books(@RequestParam("author") int authorId, ModelMap modelMap) {
-        modelMap.put("author", DaoUtils.getUser(authorId));
-        return "books";
-    }
-    
-    @RequestMapping("/list")
-    @ResponseBody
-    public Collection<UserInfo> list(){
-    	return DaoUtils.getUserList();
-    }
+
+
 }

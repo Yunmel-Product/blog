@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <title>${title ?! "云麦尔科技有限公司 - 博客"}</title>
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+
+    #include("include/header.html")
+    <div class="wp cl">
+        <div class="left top9 cl">
+            <div class="banner cl">
+                <div class="left2 cl">
+                    <a href="${b.alink}" title="${b.atitle}"><img src="/assert/common/images/thum/1.jpg" alt="${b.atitle}"></a>
+                    <h2><a href="${b.alink}" title="${b.atitle}">${b.atitle}</a></h2>
+                </div>
+                <div class="right2 cl">
+                    <ul>
+                        <li>
+                            <a href="${b.blink}" title="${b.btitle}"><img src="/assert/common/images/thum/3.jpg" alt="${b.btitle}"></a>
+                            <h2><a href="${b.blink}" title="${b.btitle}">${b.btitle}</a></h2>
+                        </li>
+                        <li>
+                            <a href="${b.clink}" title="${b.ctitle}"><img src="/assert/common/images/thum/5.jpg" alt="${b.ctitle}"></a>
+                            <h2><a href="${b.clink}" title="${b.ctitle}">${b.ctitle}</a></h2>
+                        </li>
+                    <ul>
+                </div>
+            </div>
+            <div class="main cl">
+                <ul>
+                    #for(vo:articles)
+                        <li>
+                            <div class="main_left z cl">
+                                #if (vo.commend == 1)
+                                    <div class="mod-angle">
+                                        热
+                                    </div>
+                                #end
+                                <a href="/article/${vo.id}.html" title="${vo.title}">
+                                    #if (vo.pic != '')
+                                        <img src="/assert/common/images/thum/5.jpg" alt="{$vo.title}">
+                                    #else
+                                        <img src="/assert/theme/default/img/1.jpg" alt="暂无缩略图">
+                                    #end
+                                </a>
+                            </div>
+                            <div class="main_right cl">
+                                <h2><a href="/article/${vo.id}.html" title="${vo.title}">${vo.title}</a></h2>
+                                <p>
+                                    <span><i class="zuozhe"></i>${vo.author}</span>
+                                    <span class="pipe"></span><i class="shijian"></i>${vo.time}<span></span>
+                                    <span class="pipe"></span><i class="liulan"></i>${vo.view}<span></span>
+                                </p>
+                                <p>
+                                    ${vo.description}...
+                                </p>
+                            </div>
+                            <div class="main_span cl">
+                            </div>
+                        </li>
+                    #end
+                </ul>
+            </div>
+            <div class="pages">
+                {$page}
+            </div>
+        </div>
+        <div class="right cl">
+            #include("include/right.html")
+        </div>
+    </div>
+    #include("include/footer.html")
+</body>
+</html>
