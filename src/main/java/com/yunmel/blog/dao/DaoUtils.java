@@ -58,7 +58,7 @@ public class DaoUtils {
         categories.add(new Category("3","产品"));
         categories.add(new Category("4","动态"));
 
-        sql2o = new Sql2o("jdbc:mysql://localhost:3306/yblog", "root", "123456");
+        sql2o = new Sql2o("jdbc:mysql://localhost:3306/yblog", "root", "root");
 
     }
 

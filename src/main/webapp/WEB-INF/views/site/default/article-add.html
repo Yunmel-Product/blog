@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="/favicon.ico" rel="shortcut icon">
+    <title>Templet360 - 欢迎投稿</title>
+    <link rel="stylesheet" href="${res}/css/demo.css">
+    <link rel="stylesheet" href="/assert/admin/layui/css/layui.css">
+    <script src="/assert/admin/layui/layui.js"></script>
+    <link rel="stylesheet" href="/assert/common/simditor/styles/simditor.css">
+    <link rel="stylesheet" href="/assert/common/simditor/styles/simditor-markdown.css">
+    <script type="text/javascript" src="/assert/common/simditor/scripts/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="/assert/common/simditor/scripts/module.js"></script>
+    <script type="text/javascript" src="/assert/common/simditor/scripts/uploader.js"></script>
+    <script type="text/javascript" src="/assert/common/simditor/scripts/hotkeys.js"></script>
+    <script type="text/javascript" src="/assert/common/simditor/scripts/simditor.js"></script>
+    <script type="text/javascript" src="/assert/common/simditor/scripts/marked.js"></script>
+    <script type="text/javascript" src="/assert/common/simditor/scripts/to-markdown.js"></script>
+    <script type="text/javascript" src="/assert/common/simditor/scripts/simditor-markdown.js"></script>
+
+    <style type="text/css">
+        .wp2 {
+            width: 1000px;
+            margin: 0 auto;
+        }
+        .wp2 h2 {
+            font-size: 24px;font-weight: 100;color: #333;text-align: center;margin: 30px 0px;
+        }
+        .cl {zoom: 1;}
+        .cl:after {content: '\20';display: block;height: 0;clear: both;visibility: hidden;}
+        .file-box { position:relative;width:800px}
+        .file-txt {width:660px;height: 36px;line-height: 36px;background: #fff;border: 0px solid #fff;padding-left: 5px;}
+        .file-box i {position: absolute;left: 16px;top: 11px;font-size: 16px;color: #5FB878;}
+        .file-btn:hover {border-color: #D2D2D2!important;}
+        .file-btn {width: 110px;height: 36px;line-height: 36px;background: #fff;border: 1px solid #e6e6e6;padding-left: 15px;border-radius: 2px;}
+        .file-file {position:absolute;top:0;left:0; height:36px; filter:alpha(opacity:0);opacity: 0;width:110px }
+        .simditor .simditor-wrapper.toolbar-floating .simditor-toolbar {
+            top: 0px !important;
+        }
+    </style>
+    <div class="wp2 cl">
+
+        <h2>欢迎投稿</h2>
+
+
+
+        <form class="layui-form bform" method="post" action="" enctype="multipart/form-data">
+
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">文章标题</label>
+                <div class="layui-input-block">
+                    <input type="text" name="title" required lay-verify="required" placeholder="必填内容" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">文章作者</label>
+                <div class="layui-input-block">
+                    <input type="text" name="author" required lay-verify="required" placeholder="必填内容" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">缩略图</label>
+                <div class="layui-input-block">
+                    <div class="file-box">
+                        <i class="layui-icon">&#xe61f;</i>
+                        <input class="file-btn" type="button" value="选择图片">
+                        <input class="file-txt" type="text" name="textfield" id="textfield">
+                        <input class="file-file" type="file" name="pic" id="pic" size="28" onchange="document.getElementById('textfield').value=this.value" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="layui-form-item layui-form-text">
+                <label class="layui-form-label">文章描述</label>
+                <div class="layui-input-block">
+                    <textarea name="description" required lay-verify="required" placeholder="必填内容" class="layui-textarea"></textarea>
+                </div>
+            </div>
+
+            <div class="layui-form-item layui-form-text">
+                <label class="layui-form-label">文章内容</label>
+                <div class="layui-input-block">
+                    <textarea id="editor" name="content" required lay-verify="required" placeholder="必填内容" autofocus="true" class="layui-textarea"></textarea>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+                    <button class="layui-btn layui-btn-primary" onclick="history.go(-1)">返回</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+    <script>
+        var editor = new Simditor({
+            textarea: $('#editor'),
+            upload:{
+                url: "{:U('index/doUploadPic')}",
+                params: null,
+                fileKey: 'upload_file',
+                connectionCount: 3,
+                leaveConfirm: '正在上传文件，如果离开上传会自动取消'
+            },
+            markdown: false,
+            toolbar: [
+                'title',
+                'bold',
+                'italic',
+                'underline',
+                'strikethrough',
+                'fontScale',
+                'color',
+                'ol',
+                'ul',
+                'blockquote',
+                'code',
+                'table',
+                'link',
+                'image',
+                'hr',
+                'alignment',
+                'markdown'
+            ]
+        });
+    </script>
+    <script>
+        layui.use('form', function(){
+            var form = layui.form();
+        });
+    </script>
+
+    </body>
+</html>

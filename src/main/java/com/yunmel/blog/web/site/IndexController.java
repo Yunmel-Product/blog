@@ -19,7 +19,6 @@
  */
 package com.yunmel.blog.web.site;
 
-import com.sun.javafx.sg.prism.NGShape;
 import com.yunmel.blog.core.BaseController;
 import com.yunmel.blog.dao.DaoUtils;
 
@@ -30,6 +29,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.annotation.Resource;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
 
@@ -76,5 +76,11 @@ public class IndexController extends BaseController{
         }
         model.addAttribute("articles",DaoUtils.findArticlesByKeywords(keywords));
         return site("search");
+    }
+
+    @RequestMapping("article/add.html")
+    public String toArticlePage(Model model){
+        model.addAttribute("res",Site.getResPath());
+        return site("article-add");
     }
 }
