@@ -131,4 +131,24 @@ public class Article {
     public void setContent(String content) {
         this.content = content;
     }
+
+    @Override
+    public String toString() {
+        return "Article{" +
+                "id=" + id +
+                ", tid=" + tid +
+                ", title='" + title + '\'' +
+                ", open=" + open +
+                ", author='" + author + '\'' +
+                ", source='" + source + '\'' +
+                ", view='" + view + '\'' +
+                ", time='" + time + '\'' +
+                ", commend=" + commend +
+                ", choice=" + choice +
+                ", pic='" + pic + '\'' +
+                ", keywords='" + keywords + '\'' +
+                ", description='" + description + '\'' +
+                ", content='" + content + '\'' +
+                '}';
+    }
 }

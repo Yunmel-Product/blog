@@ -1,0 +1,31 @@
+#for(vo:articles)
+<li>
+    <div class="main_left z cl">
+        #if (vo.commend == 1)
+        <div class="mod-angle">
+            热
+        </div>
+        #end
+        <a href="/article/${vo.id}.html" title="${vo.title}">
+            #if (vo.pic != '')
+            <img src="/assert/common/images/thum/5.jpg" alt="{$vo.title}">
+            #else
+            <img src="/assert/theme/default/img/1.jpg" alt="暂无缩略图">
+            #end
+        </a>
+    </div>
+    <div class="main_right cl">
+        <h2><a href="/article/${vo.id}.html" title="${vo.title}">${vo.title}</a></h2>
+        <p>
+            <span><i class="zuozhe"></i>${vo.author}</span>
+            <span class="pipe"></span><i class="shijian"></i>${vo.time}<span></span>
+            <span class="pipe"></span><i class="liulan"></i>${vo.view}<span></span>
+        </p>
+        <p>
+            ${vo.description}...
+        </p>
+    </div>
+    <div class="main_span cl">
+    </div>
+</li>
+#end

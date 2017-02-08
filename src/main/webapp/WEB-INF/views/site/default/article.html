@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <title>${t.author} - ${t.title}</title>
+    <meta name="keywords" content="{$t.keyword}"/>
+    <meta name="description" content="{$t.synopsis}"/>
+    <link rel="stylesheet" href="/assert/common/simditor/styles/simditor.css">
+    #include("include/header.html")
+    <div class="wp cl">
+        <div class="left3_1 top9 cl">
+            <div class="bdsharebuttonbox">
+                <a href="#" class="bds_tsina1 bds_ico" data-cmd="tsina" title="分享到新浪微博"></a>
+                <a href="#" class="bds_weixin1 bds_ico" data-cmd="weixin" title="分享到微信"></a>
+                <a href="#" class="bds_qzone1 bds_ico" style="border-bottom: 0px" data-cmd="qzone" title="分享到QQ空间"></a>
+                <a href="#pinglun" class="bds_pin bds_ico2" style="margin-top: 30px;border-bottom: 0px">评论</a>
+            </div>
+            <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+        </div>
+        <div class="left3 cl">
+            <div class="content top9 cl">
+                <div class="toubu">
+                    <h2>${t.title}</h2>
+                    <div class="toubu_span cl">
+                        <span style="color:#333;">${t.author}</span><span class="pipe">|</span>
+                        <span>阅读：${t.view}</span><span class="pipe"></span>
+                        <span>发表时间：${t.time}</span>
+                        <span class="y"><a href="/categoty/${t.tid}.html">${t.tid}</a></span>
+                    </div>
+                </div>
+                <div class="simditor cl">
+                    <div class="simditor-body">
+                        ${t.content}
+                    </div>
+                </div>
+                <div class="neirong-shouquan">
+				    <span class="c2">*文章为作者独立观点，不代表思维实验的立场<br></span>
+                    <span id="pinglun">本文由思维实验发表并编辑，转载此文章须经作者同意，并请附上出处及本页链接。如有侵权，请联系本站删除。<br>
+                    原文链接：${t.source}
+				    </span>
+                </div>
+                <div style="margin-top: 25px;"></div>
+                <!-- UY BEGIN -->
+                <div id="uyan_frame"></div>
+                <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid={$c.yid}"></script>
+                <!-- UY END -->
+            </div>
+        </div>
+        <div class="right3 cl">
+            #include("include/right.html")
+        </div>
+    </div>
+    #include("include/footer.html")
+</body>
+</html>

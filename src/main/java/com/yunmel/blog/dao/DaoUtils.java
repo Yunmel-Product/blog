@@ -25,7 +25,6 @@ import com.yunmel.blog.model.*;
 import jetbrick.util.DateUtils;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
-import org.sql2o.reflection.ObjectConstructor;
 
 public class DaoUtils {
     private static Map<Integer, UserInfo> users;
@@ -59,7 +58,7 @@ public class DaoUtils {
         categories.add(new Category("3","产品"));
         categories.add(new Category("4","动态"));
 
-        sql2o = new Sql2o("jdbc:mysql://localhost:3306/yblog", "root", "root");
+        sql2o = new Sql2o("jdbc:mysql://localhost:3306/yblog", "root", "123456");
 
     }
 
@@ -102,6 +101,35 @@ public class DaoUtils {
         String sql = "select * from tpt_article";
         try (Connection con = sql2o.open()) {
             return con.createQuery(sql).executeAndFetch(Article.class);
+        }
+    }
+
+
+    public static List<Link> findLinks(){
+        String sql = "select * from tpt_links";
+        try (Connection con = sql2o.open()) {
+            return con.createQuery(sql).executeAndFetch(Link.class);
+        }
+    }
+
+    public static Article getArticle(Integer id) {
+        String sql = "select * from tpt_article where id= :id";
+        try (Connection con = sql2o.open()) {
+            return  con.createQuery(sql).addParameter("id",id).executeAndFetch(Article.class).get(0);
+        }
+    }
+
+    public static List<Article> findArticlesByCategoty(Integer id) {
+        String sql = "select * from tpt_article where tid = :tid";
+        try (Connection con = sql2o.open()) {
+            return con.createQuery(sql).addParameter("tid",id).executeAndFetch(Article.class);
+        }
+    }
+
+    public static List<Article> findArticlesByKeywords(String keywords) {
+        String sql = "select * from tpt_article where keywords LIKE :keywords";
+        try (Connection con = sql2o.open()) {
+            return con.createQuery(sql).addParameter("keywords","%" + keywords + "%").executeAndFetch(Article.class);
         }
     }
 }

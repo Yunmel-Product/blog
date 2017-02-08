@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <title>{$c.author} - <?php echo I('kw');?></title>
+    <meta name="keywords" content="{$c.keywords}"/>
+    <meta name="description" content="{$c.description}"/>
+    #include("include/header.html")
+    <div class="wp cl">
+        <div class="left top9 cl">
+            <div class="breadcrumb cl">
+                显示结果 "
+                ${keywords}
+                "
+            </div>
+            <div class="main cl">
+                <ul>
+                    #include("include/article-item.html")
+                </ul>
+            </div>
+            <div class="pages">
+                {$page}
+            </div>
+        </div>
+        <div class="right cl">
+            #include("include/right.html")
+        </div>
+    </div>
+    #include("include/footer.html")
+</body>
+</html>

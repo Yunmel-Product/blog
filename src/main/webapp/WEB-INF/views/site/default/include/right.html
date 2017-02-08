@@ -2,35 +2,36 @@
     <ul class="tuijian">
         <h3>热门推荐</h3>
         <span class="span-mark"></span>
-        <volist name="d" id="vo">
-            <li><a href="__ROOT__/article/{$vo.id}.html" title="{$vo.title}">{$vo.title}</a>
+        #for(vo:articles)
+            <li>
+                <a href="/article/${vo.id}.html" title="${vo.title}">${vo.title}</a>
                 <p>
-                    {$vo.time|date="Y-m-d H:i:s",###}
+                    ${vo.time}
                 </p>
             </li>
-        </volist>
+        #end
     </ul>
 </div>
 <div class="bfff top2 cl">
     <ul class="tuijian2">
         <h3>精选内容</h3>
         <span class="span-mark"></span>
-        <volist name="e" id="vo">
+        #for(vo:articles)
             <li>
                 <div>
-                    <a href="__ROOT__/article/{$vo.id}.html" title="{$vo.title}">
-                        <if condition="$vo[pic] neq ''">
-                            <img src="__ROOT__/Uploads{$vo.pic}" width="250" height="115" alt="{$vo.title}">
-                            <else />
-                            <img src="__HOME__/img/1.jpg" width="250" height="115" alt="暂无缩略图">
-                        </if>
+                    <a href="/article/${vo.id}.html" title="${vo.title}">
+                        #if (vo.pic != '')
+                        <img src="/assert/common/images/thum/5.jpg" alt="{$vo.title}">
+                        #else
+                        <img src="/assert/theme/default/img/1.jpg" alt="暂无缩略图">
+                        #end
                     </a>
                 </div>
                 <p>
-                    <a href="__ROOT__/article/{$vo.id}.html" title="{$vo.title}">{$vo.title}</a>
+                    <a href="/article/${vo.id}.html" title="${vo.title}">${vo.title}</a>
                 </p>
             </li>
-        </volist>
+        #end
     </ul>
 </div>
 
@@ -39,9 +40,9 @@
         <h3>友情连接</h3>
         <span class="span-mark"></span>
         <ul class="cl">
-            <volist name="l" id="vo">
-                <li><a target="_blank" href="{$vo.link}">{$vo.name}</a></li>
-            </volist>
+        #for(vo:links)
+            <li><a target="_blank" href="${vo.link}">${vo.name}</a></li>
+        #end
         </ul>
     </div>
 </div>
